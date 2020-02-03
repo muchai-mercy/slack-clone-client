@@ -52,7 +52,13 @@ const Register = () => {
 
 const registerMutation = gql`
   mutation($username: String!, $email: String!, $password: String!) {
-    register(username: $username, email: $email, password: $password)
+    register(username: $username, email: $email, password: $password) {
+      isRegistered
+      errors {
+        path
+        message
+      }
+    }
 }`;
 
 export default graphql(registerMutation)(Register);
